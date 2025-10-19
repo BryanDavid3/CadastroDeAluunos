@@ -1,0 +1,225 @@
+﻿<Window x:Class="CadastroDeAluunos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CadastroDeAluunos"
+        mc:Ignorable="d"
+        Title="Cadastro de Alunos" Height="500" Width="850"
+        Background="#FF2C2C2C"
+        FontFamily="Poppins">
+
+    <Grid Margin="20">
+        <!-- =======================
+             Definições de Linhas e Colunas
+             ======================= -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!-- =======================
+             Título Principal
+             ======================= -->
+        <Border Grid.ColumnSpan="3"
+                CornerRadius="10"
+                Background="Black"
+                BorderBrush="AliceBlue"
+                BorderThickness="1"
+                Margin="0,0,0,15">
+            <TextBlock Text="MATRÍCULA DE ALUNOS"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Padding="10"/>
+        </Border>
+
+
+        <!-- =======================
+             Seção de Cadastro
+             ======================= -->
+        <Border Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                CornerRadius="10"
+                Background="#1A000000"
+                Padding="20"
+                Margin="0,0,15,0">
+
+            <StackPanel>
+
+                <TextBlock Text="CADASTRO"
+                           Foreground="White"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20"/>
+
+                <!-- Nome -->
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="NOME:"
+                               Width="100"
+                               Foreground="Gray"
+                               VerticalAlignment="Center"/>
+                    <TextBox Name="TxtNome"
+                             Width="250"
+                             Margin="5,0,0,0"/>
+                </StackPanel>
+
+                <!-- Idade -->
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="IDADE:"
+                               Width="100"
+                               Foreground="Gray"
+                               VerticalAlignment="Center"/>
+                    <TextBox Name="TxtIdade"
+                             Width="250"
+                             Margin="5,0,0,0"/>
+                </StackPanel>
+
+                <!-- Cidade -->
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="CIDADE:"
+                               Width="100"
+                               Foreground="Gray"
+                               VerticalAlignment="Center"/>
+                    <ComboBox Name="CmbCidade"
+                              Width="250"
+                              Margin="5,0,0,0" 
+                              SelectionChanged="CmbCidade_SelectionChanged">
+                        
+                        <ComboBoxItem Content="São Paulo"/>
+                        <ComboBoxItem Content="Rio de Janeiro"/>
+                        <ComboBoxItem Content="Belo Horizonte"/>
+                        <ComboBoxItem Content="Curitiba"/>
+                        <ComboBoxItem Content="Porto Alegre"/>
+                        <ComboBoxItem Content="Salvador"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Estado -->
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="ESTADO:"
+                               Width="100"
+                               Foreground="Gray"
+                               VerticalAlignment="Center"/>
+                    <TextBox Name="TxtEstado"
+                             Width="250"
+                             Margin="5,0,0,0"/>
+                </StackPanel>
+
+                <!-- Curso -->
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="CURSO:"
+                               Width="100"
+                               Foreground="Gray"
+                               VerticalAlignment="Center"/>
+                    <TextBox Name="TxtCurso"
+                             Width="250"
+                             Margin="5,0,0,0"/>
+                </StackPanel>
+
+                <!-- Conclusão Ensino Médio -->
+                <TextBlock Text="CONCLUSÃO DO ENSINO MÉDIO:"
+                           Foreground="Gray"
+                           Margin="0,15,0,5"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <RadioButton Name="RdbSim"
+                                 Click="RdbSim_Click"
+                                 Content="Sim"
+                                 Foreground="White"
+                                 Margin="0,0,15,0"/>
+                    <RadioButton Name="RdbNao"
+                                 Click="RdbNao_Click"
+                                 Content="Não"
+                                 Foreground="White"/>
+                </StackPanel>
+
+                <!-- Botões principais -->
+                <WrapPanel HorizontalAlignment="Center" Margin="0,10,0,0">
+                    <Button Name="BtPreenchercb"
+                            Click="BtPreenchercb_Click"
+                            Content="Preencher Combo"
+                            Background="CadetBlue"
+                            FontWeight="Bold"
+                            Margin="5"
+                            Padding="5,3"/>
+                    <Button Name="BtCadastrar"
+                            Click="BtCadastrar_Click"
+                            Content="Cadastrar"
+                            Background="CadetBlue"
+                            FontWeight="Bold"
+                            Margin="5"
+                            Padding="5,3"/>
+                    <Button Name="BtListar"
+                            Click="BtListar_Click"
+                            Content="Listar"
+                            Background="CadetBlue"
+                            FontWeight="Bold"
+                            Margin="5"
+                            Padding="5,3"/>
+                </WrapPanel>
+
+                <!-- Botões de arquivo -->
+                <WrapPanel HorizontalAlignment="Center" Margin="0,10,0,0">
+                    <Button Name="BtSalvarJSON"
+                            Click="BtSalvarJSON_Click"
+                            Content="Salvar JSON"
+                            Background="CadetBlue"
+                            FontWeight="Bold"
+                            Margin="5"
+                            Padding="5,3"/>
+                    <Button Name="BtCarregarJSON"
+                            Click="BtCarregarJSON_Click"
+                            Content="Carregar JSON"
+                            Background="CadetBlue"
+                            FontWeight="Bold"
+                            Margin="5"
+                            Padding="5,3"/>
+                    <Button Name="BtGerarRelatorio"
+                            Click="BtGerarRelatorio_Click"
+                            Content="Gerar Relatório"
+                            Background="CadetBlue"
+                            FontWeight="Bold"
+                            Margin="5"
+                            Padding="5,3"/>
+                </WrapPanel>
+
+            </StackPanel>
+        </Border>
+
+
+        <!-- =======================
+             Lista de Alunos
+             ======================= -->
+        <Border Grid.Row="1"
+                Grid.Column="2"
+                CornerRadius="10"
+                Background="BurlyWood"
+                Padding="10">
+            <StackPanel>
+                <TextBlock Text="LISTA"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,10"/>
+                <ListBox Name="LstAlunos"
+                         Background="Beige"
+                         BorderThickness="1"
+                         BorderBrush="SaddleBrown"
+                         Height="330"/>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
